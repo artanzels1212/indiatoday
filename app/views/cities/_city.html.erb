@@ -1,0 +1,8 @@
+<li class="list-group-item">
+
+<p><%=city.city_name%></p>
+
+<p><%= link_to 'Edit', edit_state_city_path(city.state, city) %>|<%= link_to 'Destroy', [city.state, city], :confirm => 'Are you sure?', :method => :delete %></p>
+
+</li>
+<hr>

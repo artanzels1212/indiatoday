@@ -1,0 +1,105 @@
+<style type="text/css">.ad{
+	border:1px solid #fff;
+	padding-left: 50px !important;
+	padding-right: 50px !important; 
+	
+	width: auto !important;
+	background-color: #3e3333 !important;
+	color: #ffffff !important;
+	}</style>
+
+<div class="container-fluid">
+	<table class="table table-hover customtable">
+		<thead>
+			<tr>
+				
+				<!-- contact details -->
+				<th class="ad">Primary Mobile Number</th>
+				<th class="ad">Primary Email | Username</th>
+				<th class="ad">Contact Person</th>
+				<th class="ad">Contact Person Designation</th>
+				<th class="ad">Company Name</th>
+				<th class="ad">Office Phone</th>
+				<th class="ad">Address 1</th>
+				<th class="ad">Address 2</th>
+				<th class="ad">City</th>
+				<th class="ad">State</th>
+				<th class="ad">Postal Code</th>
+				<th class="ad">CEO NAME</th>
+				<th class="ad">Visiting card Front | Voisiting Card Back</th>
+
+				<!-- biz tabs -->
+				<th class="ad">Website</th>
+				<th class="ad">Primary Business</th>
+				<th class="ad">Ownership Type</th>
+				<th class="ad">Office Type </th>
+				<th class="ad">Yearly Sales Volume</th>
+				<th class="ad">Employees No.</th>
+				<th class="ad">Establishment Year</th>
+				<th class="ad">Additional Businesses</th>
+				
+				<!-- products -->
+				<th class="ad">Product name</th>
+				<th class="ad">Product Image</th>
+				
+				<!-- statutories -->
+				<th class="ad">Pan No.</th>
+				<th class="ad">Catalog Physical Upload</th>
+				<th class="ad">Company Service Tax No.</th>
+				<th class="ad">Company Service Tan No.</th>
+				<th class="ad">Company Reg No.</th>
+				<th class="ad">Company Cin No.</th>
+
+				<!-- website details -->
+				
+				
+			</tr>
+		</thead>
+
+		<tbody>
+			<%a= @contact_details.length%>
+			<%a.times do |i|%>
+
+				<tr>
+					<!-- contact details  -->
+					<td><%=@contact_details[i].mobile1%></td>
+					<td><%=@contact_details[i].primary_email%></td>
+					<td><%=@contact_details[i].contact_person%></td>
+					<td><%=@contact_details[i].designation%></td>
+					<td><%=@contact_details[i].company_name%></td>
+					<td>OFFICE PHONE</td>
+					<td><%=@contact_details[i].address1%></td>
+					<td><%=@contact_details[i].address2%></td>
+					<td><%=@contact_details[i].city%></td>
+					<td><%=@contact_details[i].state%></td>
+					<td><%=@contact_details[i].postal_code%></td>
+					<td><%=@contact_details[i].ceo_name%></td>
+					<td><%=image_tag @contact_details[i].visiting_card_front_image%> | <%=image_tag @contact_details[i].visiting_card_back_image%></td>
+					<!-- biz_tabs -->
+					<td><%=@biz_tabs[i].website%></td>
+					<td><%=@biz_tabs[i].primary_business_type%></td>
+					<td><%=@biz_tabs[i].ownership_type%></td>
+					<td><%=@biz_tabs[i].office_type%></td>
+					<td><%=@biz_tabs[i].annual_sales%></td>
+					<td><%=@biz_tabs[i].office_type%></td>
+					<td><%=@biz_tabs[i].no_of_employees%></td>
+					<td><%=@biz_tabs[i].year_of_establishment%></td>
+					<td><%=@biz_tabs[i].additional_businesses%></td>
+					<!-- products -->
+					<td><%=@products[i].product_name%></td>
+					<td><%=@products[i].product_image%></td>
+					<!-- statutories -->
+					<td><%=@statutories[i].pan_no%></td>
+					<td><%=@statutories[i].pan_img%></td>
+					<td><%=@statutories[i].service_tax_no%></td>
+					<td><%=@statutories[i].tan_no%></td>
+					<td><%=@statutories[i].reg_no%></td>
+					<td><%=@statutories[i].cin_no%></td>
+					<!-- <td></td> -->
+				</tr>
+
+			<%end%>
+			
+		</tbody>
+	</table>
+</div>
