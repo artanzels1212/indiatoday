@@ -1,6 +1,17 @@
 class CreateBizTabs < ActiveRecord::Migration
   def change
     create_table :biz_tabs do |t|
+      t.attachment :img_service_tax
+      t.attachment :img_reg_no
+      t.string :office_mobile
+      t.attachment :img_vat_no
+      t.attachment :img_sales_tax_no
+      t.attachment :img_excise_reg_no
+      t.attachment :pan_card_img
+      t.attachment :img_cin_number
+      t.attachment :img_tax_number
+      t.attachment :img_dgft_number
+      t.attachment :img_fssai_number
       t.string :primary_business_type
       t.text :website
       t.string :about_us

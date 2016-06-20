@@ -105,6 +105,10 @@ class AppUsersController < ApplicationController
   end
   
   def submit_form_details
+    #regx
+    mob = /\A(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\z/
+    ema = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
   render :json => {:success=>false,:message => "Please provide contact person"} and return if params[:contact_person].blank? 
   render :json => {:success=>false,:message => "Please provide designation"} and return if params[:designation].blank?  
   render :json => {:success=>false,:message => "Please provide company_name"} and return if params[:company_name].blank? 
@@ -115,9 +119,10 @@ class AppUsersController < ApplicationController
   render :json => {:success=>false,:message => "Please provide address1"} and return if params[:address1].blank?
   render :json => {:success=>false,:message => "Please provide address2"} and return if params[:address2].blank?
   render :json => {:success=>false,:message => "Please provide area/landmark"} and return if params[:area].blank?
-  render :json => {:success=>false,:message => "Please provide primary mpbile1"} and return if params[:mobile1].blank?
+  render :json => {:success=>false,:message => "Please provide primary mobile1"} and return if params[:mobile1].blank?
+  render :json => {:success=>false,:message => "Please provide valid mobile number for mobile1 field"} and return if mob.match(params[:mobile1].to_s)
   render :json => {:success=>false,:message => "Please provide terms and conditions"} and return if params[:terms_condition].blank?
-   render :json => {:success=>false,:message => "Please provide terms and signature"} and return if params[:signature].blank?
+  render :json => {:success=>false,:message => "Please provide terms and signature"} and return if params[:signature].blank?
   obj1 = ContactDetail.new
   obj1.contact_person = params[:contact_person]
   obj1.designation = params[:designation]
@@ -143,6 +148,8 @@ class AppUsersController < ApplicationController
   obj1.terms_condition = params[:terms_condition]
   obj1.signature = params[:signature]
   obj1.save
+
+  #-----------------------------------------------------------------------------------------
   render :json => {:success=>false,:message => "Please provide primary business type"} and return if params[:primary_business_type].blank?
   render :json => {:success=>false,:message => "Please provide year of establishment"} and return if params[:year_of_establishment].blank?
   render :json => {:success=>false,:message => "Please provide no of employees"} and return if params[:no_of_employees].blank?
@@ -151,8 +158,16 @@ class AppUsersController < ApplicationController
   render :json => {:success=>false,:message => "Please provide additional businesses"} and return if params[:additional_businesses].blank?
   render :json => {:success=>false,:message => "Please provide business day"} and return if params[:business_day].blank?
   render :json => {:success=>false,:message => "Please provide business hours"} and return if params[:business_hours].blank?
+  render :json => {:success=>false,:message => "Please provide office mobile"} and return if params[:office_mobile].blank?
+  
   obj2 = BizTab.new
   obj2.primary_business_type = params[:primary_business_type]
+
+  #-----new key values--------
+  obj2.office_mobile = params[:office_mobile]
+
+  #-----new key values end----
+  
   obj2.company_logo = params[:company_logo]
   obj2.website = params[:website]
   obj2.about_us = params[:about_us]
@@ -253,6 +268,45 @@ class AppUsersController < ApplicationController
   obj5.trademarks = params[:trademarks]
   obj5.save
   end
+
+  #----------------FINAL VALIDATIONS---------------
+
+  render :json => {:success=>false,:message => "Please provide contact person"} and return if params[:contact_person].blank? 
+  render :json => {:success=>false,:message => "Please provide designation"} and return if params[:designation].blank?  
+  render :json => {:success=>false,:message => "Please provide company_name"} and return if params[:company_name].blank? 
+  render :json => {:success=>false,:message => "Please provide city"} and return if params[:city].blank?
+  render :json => {:success=>false,:message => "Please provide state"} and return if params[:state].blank? 
+  render :json => {:success=>false,:message => "Please provide locality"} and return if params[:locality].blank?  
+  render :json => {:success=>false,:message => "Please provide postal code"} and return if params[:postal_code].blank?
+  render :json => {:success=>false,:message => "Please provide address1"} and return if params[:address1].blank?
+  render :json => {:success=>false,:message => "Please provide address2"} and return if params[:address2].blank?
+  render :json => {:success=>false,:message => "Please provide area/landmark"} and return if params[:area].blank?
+  render :json => {:success=>false,:message => "Please provide primary mobile1"} and return if params[:mobile1].blank?
+  render :json => {:success=>false,:message => "Please provide valid mobile number for mobile1 field"} and return if mob.match(params[:mobile1].to_s)
+  render :json => {:success=>false,:message => "Please provide terms and conditions"} and return if params[:terms_condition].blank?
+  render :json => {:success=>false,:message => "Please provide terms and signature"} and return if params[:signature].blank?
+
+  #from biz_tab
+
+  render :json => {:success=>false,:message => "Please provide primary business type"} and return if params[:primary_business_type].blank?
+  render :json => {:success=>false,:message => "Please provide year of establishment"} and return if params[:year_of_establishment].blank?
+  render :json => {:success=>false,:message => "Please provide no of employees"} and return if params[:no_of_employees].blank?
+  render :json => {:success=>false,:message => "Please provide annual sales"} and return if params[:annual_sales].blank?
+  render :json => {:success=>false,:message => "Please provide ownership type"} and return if params[:ownership_type].blank?
+  render :json => {:success=>false,:message => "Please provide additional businesses"} and return if params[:additional_businesses].blank?
+  render :json => {:success=>false,:message => "Please provide business day"} and return if params[:business_day].blank?
+  render :json => {:success=>false,:message => "Please provide business hours"} and return if params[:business_hours].blank?
+  render :json => {:success=>false,:message => "Please provide office mobile"} and return if params[:office_mobile].blank?
+
+  # from rest
+  unless params[:reg_no].nil? && params[:reg_authority].nil? &&  params[:cin_no].nil? && params[:tan_no].nil? && params[:pan_no].nil? && params[:service_tax_no].nil? && params[:excise_reg_no].nil? && params[:nsic_no].nil?
+  render :json => {:success=>false,:message => "Please provide top 5 products"} and return if params[:top_5].blank?
+  unless params[:add_product].nil? && params[:min_order_quantity].nil? && params[:top_5].nil?
+  unless params[:hp_key_desc].nil? && params[:au_profile_heading].nil? &&  params[:infra_acilities_image].nil? && params[:testimonial_image].nil? &&  params[:trademarks].nil?
+
+  #----------------FINAL VALIDATIONS END-----------
+
+
   obj6 = Information.new
   obj6.create_By = params[:app_user_id]
   obj6.sync_date = params[:sync_date]

@@ -25,42 +25,71 @@ ActiveRecord::Schema.define(version: 20160619183729) do
   end
 
   create_table "biz_tabs", force: :cascade do |t|
-    t.string   "primary_business_type",              limit: 255
-    t.text     "website",                            limit: 65535
-    t.string   "about_us",                           limit: 255
-    t.string   "year_of_establishment",              limit: 255
-    t.string   "no_of_employees",                    limit: 255
-    t.string   "annual_sales",                       limit: 255
-    t.string   "ownership_type",                     limit: 255
-    t.text     "alternate_website",                  limit: 65535
-    t.text     "additional_businesses",              limit: 65535
-    t.string   "office_type",                        limit: 255
-    t.string   "question",                           limit: 255
-    t.string   "bankers_details",                    limit: 255
-    t.string   "business_day",                       limit: 255
-    t.string   "business_hours",                     limit: 255
-    t.string   "specialization",                     limit: 255
-    t.string   "remarks",                            limit: 255
-    t.string   "deals_in",                           limit: 255
-    t.string   "business_preferred_area",            limit: 255
-    t.string   "created_by",                         limit: 255
-    t.string   "updated_by",                         limit: 255
-    t.string   "deleted_by",                         limit: 255
-    t.integer  "user_id",                            limit: 4
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
-    t.string   "company_logo_file_name",             limit: 255
-    t.string   "company_logo_content_type",          limit: 255
-    t.integer  "company_logo_file_size",             limit: 4
-    t.datetime "company_logo_updated_at"
-    t.string   "office_interior_image_file_name",    limit: 255
-    t.string   "office_interior_image_content_type", limit: 255
-    t.integer  "office_interior_image_file_size",    limit: 4
-    t.datetime "office_interior_image_updated_at"
-    t.string   "office_exterior_image_file_name",    limit: 255
-    t.string   "office_exterior_image_content_type", limit: 255
-    t.integer  "office_exterior_image_file_size",    limit: 4
-    t.datetime "office_exterior_image_updated_at"
+    t.string   "img_service_tax_file_name",      limit: 255
+    t.string   "img_service_tax_content_type",   limit: 255
+    t.integer  "img_service_tax_file_size",      limit: 4
+    t.datetime "img_service_tax_updated_at"
+    t.string   "img_reg_no_file_name",           limit: 255
+    t.string   "img_reg_no_content_type",        limit: 255
+    t.integer  "img_reg_no_file_size",           limit: 4
+    t.datetime "img_reg_no_updated_at"
+    t.string   "office_mobile",                  limit: 255
+    t.string   "img_vat_no_file_name",           limit: 255
+    t.string   "img_vat_no_content_type",        limit: 255
+    t.integer  "img_vat_no_file_size",           limit: 4
+    t.datetime "img_vat_no_updated_at"
+    t.string   "img_sales_tax_no_file_name",     limit: 255
+    t.string   "img_sales_tax_no_content_type",  limit: 255
+    t.integer  "img_sales_tax_no_file_size",     limit: 4
+    t.datetime "img_sales_tax_no_updated_at"
+    t.string   "img_excise_reg_no_file_name",    limit: 255
+    t.string   "img_excise_reg_no_content_type", limit: 255
+    t.integer  "img_excise_reg_no_file_size",    limit: 4
+    t.datetime "img_excise_reg_no_updated_at"
+    t.string   "pan_card_img_file_name",         limit: 255
+    t.string   "pan_card_img_content_type",      limit: 255
+    t.integer  "pan_card_img_file_size",         limit: 4
+    t.datetime "pan_card_img_updated_at"
+    t.string   "img_cin_number_file_name",       limit: 255
+    t.string   "img_cin_number_content_type",    limit: 255
+    t.integer  "img_cin_number_file_size",       limit: 4
+    t.datetime "img_cin_number_updated_at"
+    t.string   "img_tax_number_file_name",       limit: 255
+    t.string   "img_tax_number_content_type",    limit: 255
+    t.integer  "img_tax_number_file_size",       limit: 4
+    t.datetime "img_tax_number_updated_at"
+    t.string   "img_dgft_number_file_name",      limit: 255
+    t.string   "img_dgft_number_content_type",   limit: 255
+    t.integer  "img_dgft_number_file_size",      limit: 4
+    t.datetime "img_dgft_number_updated_at"
+    t.string   "img_fssai_number_file_name",     limit: 255
+    t.string   "img_fssai_number_content_type",  limit: 255
+    t.integer  "img_fssai_number_file_size",     limit: 4
+    t.datetime "img_fssai_number_updated_at"
+    t.string   "primary_business_type",          limit: 255
+    t.text     "website",                        limit: 65535
+    t.string   "about_us",                       limit: 255
+    t.string   "year_of_establishment",          limit: 255
+    t.string   "no_of_employees",                limit: 255
+    t.string   "annual_sales",                   limit: 255
+    t.string   "ownership_type",                 limit: 255
+    t.text     "alternate_website",              limit: 65535
+    t.text     "additional_businesses",          limit: 65535
+    t.string   "office_type",                    limit: 255
+    t.string   "question",                       limit: 255
+    t.string   "bankers_details",                limit: 255
+    t.string   "business_day",                   limit: 255
+    t.string   "business_hours",                 limit: 255
+    t.string   "specialization",                 limit: 255
+    t.string   "remarks",                        limit: 255
+    t.string   "deals_in",                       limit: 255
+    t.string   "business_preferred_area",        limit: 255
+    t.string   "created_by",                     limit: 255
+    t.string   "updated_by",                     limit: 255
+    t.string   "deleted_by",                     limit: 255
+    t.integer  "user_id",                        limit: 4
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
   end
 
   add_index "biz_tabs", ["user_id"], name: "index_biz_tabs_on_user_id", using: :btree

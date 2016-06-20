@@ -70,6 +70,6 @@ class BizTabsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def biz_tab_params
-      params.require(:biz_tab).permit(:primary_business_type, :website, :about_us, :year_of_establishment, :no_of_employees, :annual_sales, :ownership_type, :alternate_website, :additional_businesses, :office_type, :question, :bankers_details, :business_day, :business_hours, :specialization, :remarks, :deals_in, :business_preferred_area, :created_by, :updated_by, :deleted_by, :user_id, :company_logo, :office_interior_image, :office_exterior_image)
+      params.require(:biz_tab).permit(:img_service_tax, :img_reg_no, :office_mobile, :img_vat_no, :img_sales_tax_no, :img_excise_reg_no, :pan_card_img, :img_cin_number, :img_tax_number, :img_dgft_number, :img_fssai_number, :primary_business_type, :website, :about_us, :year_of_establishment, :no_of_employees, :annual_sales, :ownership_type, :alternate_website, :additional_businesses, :office_type, :question, :bankers_details, :business_day, :business_hours, :specialization, :remarks, :deals_in, :business_preferred_area, :created_by, :updated_by, :deleted_by, :user_id, :company_logo, :office_interior_image, :office_exterior_image)
     end
 end
